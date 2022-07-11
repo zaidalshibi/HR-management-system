@@ -27,13 +27,13 @@ Employee.prototype.netSalary = function() {
 }
 
 // creating the instances
-const ghazi_Samer = new Employee(1000, "Ghazi Samer", "Administration", "Senior", "../assets/Ghazi.jpg");
-const lana_Ali = new Employee(1001, "Lana Ali", "Finance", "Senior", "../assets/Lana.jpg");
-const tamara_Ayoub = new Employee(1002, "Tamara Ayoub", "Marketing", "Senior", "../assets/Tamara.jpg");
-const safi_Walid = new Employee(1003, "Safi Walid", "Administration", "Mid-Senior", "../assets/Safi.jpg");
-const omar_Zaid = new Employee(1004, "Omar Zaid", "Development", "Senior", "../assets/Omar.jpg");
-const rana_Saleh = new Employee(1005, "Rana Saleh", "Development", "Junior", "../assets/Rana.jpg");
-const hadi_Ahmad = new Employee(1006, "Hadi Ahmad", "Finance", "Mid-Senior", "../assets/Hadi.jpg");
+const ghazi_Samer = new Employee(1000, "Ghazi Samer", "Administration", "Senior", "./assets/Ghazi.jpg");
+const lana_Ali = new Employee(1001, "Lana Ali", "Finance", "Senior", "./assets/Lana.jpg");
+const tamara_Ayoub = new Employee(1002, "Tamara Ayoub", "Marketing", "Senior", "./assets/Tamara.jpg");
+const safi_Walid = new Employee(1003, "Safi Walid", "Administration", "Mid-Senior", "./assets/Safi.jpg");
+const omar_Zaid = new Employee(1004, "Omar Zaid", "Development", "Senior", "./assets/Omar.jpg");
+const rana_Saleh = new Employee(1005, "Rana Saleh", "Development", "Junior", "./assets/Rana.jpg");
+const hadi_Ahmad = new Employee(1006, "Hadi Ahmad", "Finance", "Mid-Senior", "./assets/Hadi.jpg");
 
 
 staff.forEach(staff => {
