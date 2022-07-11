@@ -1,7 +1,8 @@
 'use strict'
 
-let staff=[]
-let employeeLevel=[]
+let staff=[] // array of instances
+
+// creating a constractor to add the employees info
 function Employee(employeeId,fullName,departmentName,level,imageUrl) {
     this.employeeId = employeeId;
     this.fullName = fullName;
@@ -10,55 +11,71 @@ function Employee(employeeId,fullName,departmentName,level,imageUrl) {
     this.imageUrl= imageUrl;
     staff.push(this);
 }
-employeeLevel=["Junior","Mid-Senior","Senior"]
 
+// calculating the salary depending on the employee level
+// modifing the code to meet the best practices
 Employee.prototype.salary = function() {
-    for (let i=0; i<employeeLevel.length; i++)
-    if (this.level === employeeLevel[i]){
-        this.salary = Math.floor(Math.random() * ((500*(i+2)) - (500*(i+1)))) + (500*(i+1));
-        this.salary-= this.salary*0.075;
-        return this.salary=Math.floor(this.salary)
-    }
+    (this.level.toLowerCase()==="senior") ? this.salary = getRndInteger (1500, 2008) :
+        (this.level.toLowerCase()==="mid-senior") ? this.salary = getRndInteger(1000, 1500):
+            this.salary =getRndInteger(500,1000);
+            return this.salary
 }
-document.write("<section>Full name : Salary\n</section>")
 
-Employee.prototype.printReqInfo = function () { document.write(`<section>${this.fullName}: ${this.salary()}</section>`)}
+// calculating the net salary with a tax of 7.5%
+Employee.prototype.netSalary = function() {
+    this.netSalary=math.floor((this.salary * 0.075)+this.salary);
+}
+
+// creating the instances
+const ghazi_Samer = new Employee(1000, "Ghazi Samer", "Administration", "Senior", "../assets/Ghazi.jpg");
+const lana_Ali = new Employee(1001, "Lana Ali", "Finance", "Senior", "../assets/Lana.jpg");
+const tamara_Ayoub = new Employee(1002, "Tamara Ayoub", "Marketing", "Senior", "../assets/Tamara.jpg");
+const safi_Walid = new Employee(1003, "Safi Walid", "Administration", "Mid-Senior", "../assets/Safi.jpg");
+const omar_Zaid = new Employee(1004, "Omar Zaid", "Development", "Senior", "../assets/Omar.jpg");
+const rana_Saleh = new Employee(1005, "Rana Saleh", "Development", "Junior", "../assets/Rana.jpg");
+const hadi_Ahmad = new Employee(1006, "Hadi Ahmad", "Finance", "Mid-Senior", "../assets/Hadi.jpg");
 
 
-const ghazi_Samer = new Employee (1000, "Ghazi Samer", "Administration", "Senior","url1");
-const lana_Ali = new Employee (1001, "Lana Ali", "Finance", "Senior","url2");
-const tamara_Ayoub = new Employee (1002, "Tamara Ayoub", "Marketing", "Senior","url3");
-const safi_Walid = new Employee (1003, "Safi Walid", "Administration", "Mid-Senior","url4");
-const omar_Zaid = new Employee (1004, "Omar Zaid", "Development", "Senior","url5");
-const rana_Saleh = new Employee (1005, "Rana Saleh", "Development", "Junior","url6");
-const hadi_Ahmad = new Employee (1006, "Hadi Ahmad", "Finance", "Mid-Senior","url7");
+staff.forEach(staff => {
 
-printInfo();
+    // creating the parent
+    let cards=document.createElement("div");
+    cards.setAttribute("class","card");
 
+    // creating the child (img)
+    let cardimg=document.createElement("img");
+    cardimg.src=staff.imageUrl;
+    cardimg.style="width:100%;";
+    cardimg.alt=`${staff.fullName}`;
 
-// Functions:
-function printInfo () {
-    for (let i=0; i<staff.length;i++){
-        staff[i].printReqInfo()
-    }}
-
-// Emplyee ID:
-// function employeeIdNumber (){
+    // creating the child (div)
+    let card=document.createElement("div");
+    card.setAttribute("class","container");
     
-// }
-// Employee department:
-// let department = function(depFirstLetter) {
-//     let arr=["Administration","Marketing","Development","Finance"];
-//     if (depFirstLetter=="A") {
-//         return arr[0];
-//     }
-//     else if (depFirstLetter=="M") {
-//         return arr[1];
-//     }
-//     else if (depFirstLetter=="D") {
-//         return arr[2];
-//     }
-//     else if (depFirstLetter=="F") {
-//         return arr[3]
-//     }
-// }
+    // rendering the required info
+    let cardTitle=document.createElement("h4");
+    cardTitle.textContent=`Name: ${staff.fullName}- ID: ${staff.employeeId}`;
+    let cardText=document.createElement("p");
+    cardText.textContent=`Department: ${staff.departmentName} - Level: ${staff.level}`;
+    let cardSalary = document.createElement("p");
+    cardSalary.textContent=`Salary: ${staff.salary()}`;
+
+    // adding the child to the parent
+    card.appendChild(cardTitle);
+    card.appendChild(cardText);
+    card.appendChild(cardSalary);
+    // adding the child to the parent
+    cards.appendChild(cardimg);
+    cards.appendChild(card);
+    let main=document.getElementsByTagName("main");
+    main[0].appendChild(cards);
+
+
+
+});
+// Funcions:
+// https://www.w3schools.com/js/js_random.asp
+function getRndInteger(min, max) {
+    return Math.floor(Math.random() * (max - min + 1) ) + min;
+}
+
