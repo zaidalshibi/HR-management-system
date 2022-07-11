@@ -38,6 +38,8 @@ const hadi_Ahmad = new Employee(1006, "Hadi Ahmad", "Finance", "Mid-Senior", "as
 
 staff.forEach(staff => {
 
+    // creating the grand parent
+
     // creating the parent
     let cards=document.createElement("div");
     cards.setAttribute("class","card");
@@ -60,18 +62,17 @@ staff.forEach(staff => {
     let cardSalary = document.createElement("p");
     cardSalary.textContent=`Salary: ${staff.salary()}`;
 
-    // adding the child to the parent
+    // appending the child to the parent
     card.appendChild(cardTitle);
     card.appendChild(cardText);
     card.appendChild(cardSalary);
-    // adding the child to the parent
+
+    // appending the child to the parent
     cards.appendChild(cardimg);
     cards.appendChild(card);
-    let main=document.getElementsByTagName("main");
-    main[0].appendChild(cards);
 
-
-
+    //  seperation algorithm
+    (staff.departmentName==="Administration") ? document.getElementById("administration").appendChild(cards) : (staff.departmentName==="Finance") ? document.getElementById("finance").appendChild(cards) : (staff.departmentName==="Marketing") ? document.getElementById("marketing").appendChild(cards) : document.getElementById("development").appendChild(cards);
 });
 // Funcions:
 // https://www.w3schools.com/js/js_random.asp
