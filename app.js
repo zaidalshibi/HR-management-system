@@ -56,11 +56,11 @@ staff.forEach(staff => {
     
     // rendering the required info
     let cardTitle=document.createElement("h4");
-    cardTitle.textContent=`Name: ${staff.fullName}- ID: ${staff.employeeId}`;
+    cardTitle.innerText=`Name: ${staff.fullName} \n ID: ${staff.employeeId}`;
     let cardText=document.createElement("p");
-    cardText.textContent=`Department: ${staff.departmentName} - Level: ${staff.level}`;
+    cardText.innerText=`Department: ${staff.departmentName} \n Level: ${staff.level}`;
     let cardSalary = document.createElement("p");
-    cardSalary.textContent=`Salary: ${staff.salary()}`;
+    cardSalary.innerText=`Salary: ${staff.salary()}`;
 
     // appending the child to the parent
     card.appendChild(cardTitle);
